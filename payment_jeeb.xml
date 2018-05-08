@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="j2store" method="upgrade">
+    <name>Jeeb Payment for j2store</name>
+    <version>2</version>
+    <creationDate>08.05.2018</creationDate>
+    <author>Jeeb</author>
+    <authorEmail>info@jeeb.io</authorEmail>
+    <authorUrl>https://www.jeeb.io/</authorUrl>
+    <copyright>Jeeb</copyright>
+    <description>J2STORE_JEEB_PAYMENT_DESC</description>
+    <scriptfile>script.payment_jeeb.php</scriptfile>
+    <files>
+        <filename plugin="payment_jeeb">payment_jeeb.php</filename>
+        <filename>index.html</filename>
+        <folder>helpers</folder>
+        <folder>payment_jeeb</folder>
+        <folder>validation</folder>
+    </files>
+    <languages folder="admin">
+        <language tag="en-GB">languages/en-GB.plg_j2store_payment_jeeb.ini</language>
+        <language tag="en-GB">languages/en-GB.plg_j2store_payment_jeeb.sys.ini</language>
+    </languages>
+	<media folder="/" destination="j2store/images/payment/jeeb">
+        <filename>bitcoin.png</filename>
+	</media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addrulepath="plugins/j2store/payment_jeeb/validation">
+                <field name="display_name" type="text" size="30" default="Jeeb Payment" label="j2store_plugin_display_name" description="j2store_plugin_display_name_desc" required="required" />
+                <field type="spacer" />
+                <field name="signature" type="text" default="" label="Signature" description="Api Key" required="required" />
+                <field type="spacer" />
+                <field name="baseCur" type="radio" default="btc" label="Base Currency" description="Select Base currency">
+                    <option value="btc">BTC</option>
+                    <option value="eur">EUR</option>
+                    <option value="irr">IRR</option>
+                    <option value="usd">USD</option>
+                </field>
+                <field type="spacer" />
+                <field name="sandbox" type="radio" default="0" label="Sandbox" description="Select the environmant">
+                    <option value="0">J2STORE_NO</option>
+                    <option value="1">J2STORE_YES</option>
+                </field>
+                <field type="spacer" />
+                <field name="targetCur" type="text" label="Target Currency" default="btc/test-btc" description="" required="required"/>
+                <field type="spacer" label="Options = [btc,bch,eth,ltc,xmr,xrp,test-btc] (Use '/' to enter more than 1 option)" />
+                <field type="spacer" label="Eg: For selecting eth,ltc and xrp use 'eth/ltc/xrp'" />
+                <field type="spacer" />
+                <field name="lang" type="radio" default="none" label="Language" description="Select the language">
+                    <option value="none">Auto-Select</option>
+                    <option value="en">English</option>
+                    <option value="fa">Persian</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
