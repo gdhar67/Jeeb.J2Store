@@ -34,6 +34,7 @@
                     <option value="btc">BTC</option>
                     <option value="eur">EUR</option>
                     <option value="irr">IRR</option>
+                    <option value="toman">TOMAN</option>
                     <option value="usd">USD</option>
                 </field>
                 <field type="spacer" />
