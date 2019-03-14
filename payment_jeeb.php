@@ -76,7 +76,14 @@ class plgJ2StorePayment_jeeb extends J2StorePaymentPlugin {
         $order_total  = $price;
 
         error_log($vars->amount." ".$baseUri." ".$signature." ".$callBack." ".$notification);
-        error_log("Cost = ". $price);
+        
+
+        if($baseCur=='toman'){
+          $baseCur='irr';
+          $order_total *= 10;
+        }
+        
+        error_log("Cost = ". $order_total);
 
         $amount = $this->convertIrrToBtc($baseUri, $order_total, $signature, $baseCur);
 
@@ -90,6 +97,8 @@ class plgJ2StorePayment_jeeb extends J2StorePaymentPlugin {
           "allowTestNet"     => $this->params->get('sandbox')==1 ? true : false,
           "language"         => $lang
         );
+        
+        error_log(var_export($params, TRUE));
 
         $token = $this->createInvoice($baseUri, $amount, $params, $signature);
 
